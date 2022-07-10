@@ -1,1 +1,3 @@
-# timer app
+# pmdr
+
+pomodoro timer
