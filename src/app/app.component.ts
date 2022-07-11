@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { CdTimerComponent } from 'angular-cd-timer';
 
-const SOUND_PATH = "../../../assets/completed.wav";
+const ALARM_SOUND_PATH = "../../../assets/completed.wav";
+const SELECT_SOUND_PATH = "../../../assets/select.wav";
 
 @Component({
   selector: 'app-root',
@@ -17,28 +18,35 @@ export class AppComponent implements OnInit {
   clock: number = 1;
 
   /** Completed sound effect audio */
-  soundEffect = new Audio();
+  alarm = new Audio();
+
+  /** Set time sound effect audio */
+  select = new Audio();
 
   /** Flag to indicate that timer is running */
   running = true;
 
   /** On init lifecycle hook */
   ngOnInit() {
-    this.soundEffect.src = SOUND_PATH;
-    this.soundEffect.load();
-    this.soundEffect.volume = 0.3;
+    this.select.src = SELECT_SOUND_PATH;
+    this.select.load();
+    this.select.volume = 0.1;
+
+    this.alarm.src = ALARM_SOUND_PATH;
+    this.alarm.load();
+    this.alarm.volume = 0.3;
   }
 
   /** Add time to the timer */
   setTimer(minutes: number) {
+    this.select.play();
     this.clock = minutes;
     this.basicTimer.start();
   }
 
   /** Triggered when timer completes */
   completed() {
-    this.soundEffect.play();
-    console.log('completed');
+    this.alarm.play();
   }
 
   /** Start timer */
