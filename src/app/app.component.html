@@ -1,16 +1,22 @@
-<div class="bar">
-  <div [class.disabled]="running" (click)="start()">start</div>
-  <div [class.disabled]="!running" (click)="stop()">pause</div>
-</div>
+<ng-container *ngIf="isLoading">
+  <img src="assets/circles.svg" />
+</ng-container>
 
-<cd-timer #timer format="hms"
-  [endTime]="clock * 60"
-  (onComplete)="completed()">
-</cd-timer>
-
-<div class="bar">
-  <div [class.disabled]="clock !== 60" (click)="setTimer(60)">60min</div>
-  <div [class.disabled]="clock !== 45" (click)="setTimer(45)">45min</div>
-  <div [class.disabled]="clock !== 30" (click)="setTimer(30)">30min</div>
-  <div [class.disabled]="clock !== 15" (click)="setTimer(15)">15min</div>
-</div>
+<ng-container *ngIf="!isLoading">
+  <div class="bar">
+    <div [class.disabled]="running" (click)="start()">start</div>
+    <div [class.disabled]="!running" (click)="stop()">pause</div>
+  </div>
+  
+  <cd-timer #timer format="hms"
+    [endTime]="clock * 60"
+    (onComplete)="completed()">
+  </cd-timer>
+  
+  <div class="bar">
+    <div [class.disabled]="clock !== 60" (click)="setTimer(60)">60min</div>
+    <div [class.disabled]="clock !== 45" (click)="setTimer(45)">45min</div>
+    <div [class.disabled]="clock !== 30" (click)="setTimer(30)">30min</div>
+    <div [class.disabled]="clock !== 15" (click)="setTimer(15)">15min</div>
+  </div>
+</ng-container>

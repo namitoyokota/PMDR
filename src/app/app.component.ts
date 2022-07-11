@@ -26,6 +26,9 @@ export class AppComponent implements OnInit {
   /** Flag to indicate that timer is running */
   running = true;
 
+  /** Flag to indicate when UI is not ready */
+  isLoading = true;
+
   /** On init lifecycle hook */
   ngOnInit() {
     this.select.src = SELECT_SOUND_PATH;
@@ -35,6 +38,10 @@ export class AppComponent implements OnInit {
     this.alarm.src = ALARM_SOUND_PATH;
     this.alarm.load();
     this.alarm.volume = 0.3;
+
+    setInterval(() => {
+      this.isLoading = false;
+    }, 3000)
   }
 
   /** Add time to the timer */
