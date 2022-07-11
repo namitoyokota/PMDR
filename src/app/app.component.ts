@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   @ViewChild('timer', { static: true }) basicTimer!: CdTimerComponent;
 
   /** How many minutes are left */
-  clock: number = 1;
+  clock: number = 60;
 
   /** Completed sound effect audio */
   alarm = new Audio();
@@ -58,12 +58,14 @@ export class AppComponent implements OnInit {
 
   /** Start timer */
   start() {
+    this.select.play();
     this.basicTimer.resume();
     this.running = true;
   }
 
   /** Stop timer */
   stop() {
+    this.select.play();
     this.basicTimer.stop();
     this.running = false;
   }

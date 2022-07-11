@@ -1,18 +1,32 @@
-:host {
+.timer-menu {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
+
+    cd-timer {
+        font-size: 100px;
+    }
+
+    .bar {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
 }
 
-cd-timer {
-    font-size: 100px;
-}
-
-.bar {
+.spinner {
     display: flex;
-    flex-direction: row;
-    gap: 20px;
+    justify-content: center;
+
+    img {
+        width: 75px;
+    }
+}
+
+.hidden {
+    height: 0;
+    visibility: hidden;
 }
 
 div:hover {
@@ -21,8 +35,4 @@ div:hover {
 
 .disabled {
     opacity: 0.5;
-}
-
-img {
-    width: 75px;
 }
